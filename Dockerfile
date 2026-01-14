@@ -9,7 +9,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # STAGE 2: Run (Sử dụng Image nhẹ chỉ chứa JRE)
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 # Chỉ lấy file .jar đã build từ stage trước
 COPY --from=build /app/target/*.jar app.jar
